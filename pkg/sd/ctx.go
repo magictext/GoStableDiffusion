@@ -6,6 +6,12 @@ type Context struct {
 	internal *sd.Ctx
 }
 
+func NewDefault(modelPath string) (*Context, error) {
+	defaultParams := GetDefaultContextParams()
+	defaultParams.ModelPath = modelPath
+	return NewContext(defaultParams)
+}
+
 func NewContext(params ContextParams) (*Context, error) {
 	if err := params.validate(); err != nil {
 		return nil, err

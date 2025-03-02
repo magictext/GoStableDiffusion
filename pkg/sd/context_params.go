@@ -4,6 +4,7 @@ import (
 	"GoStableDiffusion/internal/sd"
 	"errors"
 	"os"
+	"runtime"
 )
 
 type ContextParams struct {
@@ -29,6 +30,18 @@ type ContextParams struct {
 	KeepControlNetCpu     bool
 	KeepVaeOnCpu          bool
 	DiffusionFlashAttn    bool
+}
+
+var defaultContextParams = ContextParams{
+	VaeDecodeOnly:         true,
+	FreeParamsImmediately: true,
+	NThreads:              runtime.NumCPU(),
+	RngType:               sd.CudaRng,
+	Schedule:              sd.Default,
+}
+
+func GetDefaultContextParams() ContextParams {
+	return defaultContextParams
 }
 
 func (cp *ContextParams) validate() error {
