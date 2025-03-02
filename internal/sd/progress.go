@@ -3,10 +3,8 @@ package sd
 /*
 #include "../../stable-diffusion.cpp/stable-diffusion.h"
 
-// Deklaration der Go-Callback-Funktion
 extern void goProgressCallback(int step, int steps, float time, void* data);
 
-// C-Trampoline-Funktion, die den Go-Callback aufruft
 static inline void cProgressCallback(int step, int steps, float time, void* data) {
     goProgressCallback(step, steps, time, data);
 }
@@ -24,13 +22,12 @@ var progressCallback ProgressCallback
 
 //export goProgressCallback
 func goProgressCallback(step C.int, steps C.int, seconds C.float, data unsafe.Pointer) {
-	fmt.Printf("Progress: Step %d of %d, Time: %.2f\n", int(step), int(steps), float32(seconds))
 	if progressCallback != nil {
 		parsedDuration, err := time.ParseDuration(fmt.Sprintf("%fs", float32(seconds)))
 		if err != nil {
 			parsedDuration = time.Duration(0)
 		}
-		progressCallback(int(steps), int(steps), parsedDuration, data)
+		progressCallback(int(step), int(steps), parsedDuration, data)
 	}
 }
 
