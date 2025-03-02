@@ -1,0 +1,24 @@
+FROM nvidia/cuda:12.8.0-cudnn-devel-ubuntu24.04 AS builder
+
+RUN apt-get update && \
+    apt-get install -y cmake git
+
+COPY --from=golang:1.24-bookworm /usr/local/go/ /usr/local/go/
+ENV PATH="/usr/local/go/bin:${PATH}"
+
+WORKDIR /src
+COPY . .
+
+RUN rm -rf stable-diffusion.cpp/build
+RUN CUDA=1 go generate
+RUN go build main.go
+
+FROM nvidia/cuda:12.8.0-cudnn-runtime-ubuntu24.04
+
+WORKDIR /app
+
+ADD https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/main/sd-v1-4.ckpt /app/models/sd-v1-4.ckpt
+
+COPY --from=builder /src/main .
+
+CMD ["/app/main"]
