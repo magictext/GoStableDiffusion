@@ -1,8 +1,8 @@
 package sd
 
 import (
-	"GoStableDiffusion/internal/sd"
 	"errors"
+	"github.com/Binozo/GoStableDiffusion/internal/sd"
 	"os"
 	"runtime"
 )

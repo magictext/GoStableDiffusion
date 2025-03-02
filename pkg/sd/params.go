@@ -1,6 +1,6 @@
 package sd
 
-import "GoStableDiffusion/internal/sd"
+import "github.com/Binozo/GoStableDiffusion/internal/sd"
 
 type Params struct {
 	Prompt, NegativePrompt       string

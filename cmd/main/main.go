@@ -1,8 +1,8 @@
 package main
 
 import (
-	"GoStableDiffusion/pkg/sd"
 	"fmt"
+	"github.com/Binozo/GoStableDiffusion/pkg/sd"
 	"image/png"
 	"os"
 	"time"
