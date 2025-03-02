@@ -6,6 +6,7 @@ on:
 
 jobs:
   dockerize_cpu:
+    name: "Dockerize CPU"
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -24,6 +25,7 @@ jobs:
         run: docker build --push -f Dockerfile -t ghcr.io/binozo/go-stable-diffusion:latest .
 
   dockerize_cuda:
+    name: "Dockerize Cuda"
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -45,6 +47,7 @@ jobs:
         run: docker build --push -f Dockerfile.cuda -t ghcr.io/binozo/go-stable-diffusion:cuda .
 
   dockerize_vulkan:
+    name: "Dockerize Vulkan"
     runs-on: ubuntu-latest
     permissions:
       contents: read
