@@ -29,6 +29,9 @@ jobs:
       contents: read
       packages: write
     steps:
+      - name: Cleanup GitHub bloat
+        run: curl -s -L https://raw.githubusercontent.com/apache/flink/02d30ace69dc18555a5085eccf70ee884e73a16e/tools/azure-pipelines/free_disk_space.sh | bash
+
       - uses: actions/checkout@v3
 
       - name: 'Login to GitHub Container Registry'
