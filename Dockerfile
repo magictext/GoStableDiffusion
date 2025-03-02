@@ -21,6 +21,8 @@ RUN go build -o main cmd/main/main.go
 
 FROM debian:bookworm-slim
 
+LABEL org.opencontainers.image.source = "https://github.com/Binozo/GoStableDiffusion"
+
 WORKDIR /app
 COPY --from=builder /src/main .
 COPY --from=downloader /models/sd-v1-4.ckpt /app/models/sd-v1-4.ckpt
