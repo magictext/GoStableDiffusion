@@ -11,6 +11,8 @@ import (
 
 func main() {
 	fmt.Println("Warming up")
+	fmt.Println("Running with Cuda:", sd.HasCuda())
+
 	ctx, err := sd.NewDefault("models/sd-v1-4.ckpt")
 	if err != nil {
 		panic(err)
