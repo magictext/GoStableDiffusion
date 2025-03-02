@@ -16,7 +16,7 @@ jobs:
           password: ${{secrets.GITHUB_TOKEN}}
 
       - name: Build CPU Docker image
-        run: docker build --push -f Dockerfile -t ghcr.io/Binozo/go-stable-diffusion:latest .
+        run: docker build --push -f Dockerfile -t ghcr.io/binozo/go-stable-diffusion:latest .
 
       - name: Build Cuda Docker image
-        run: docker build --push -f Dockerfile.cuda -t ghcr.io/Binozo/go-stable-diffusion:cuda .
+        run: docker build --push -f Dockerfile.cuda -t ghcr.io/binozo/go-stable-diffusion:cuda .
