@@ -1,6 +1,8 @@
 name: Dockerize
 on:
-  - push
+  push:
+    branches:
+      - master
 
 jobs:
   dockerize:
