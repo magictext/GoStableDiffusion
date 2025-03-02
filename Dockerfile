@@ -17,7 +17,7 @@ COPY . .
 RUN cd stable-diffusion.cpp && rm -rf build
 
 RUN go generate
-RUN go build main.go
+RUN go build -o main cmd/main/main.go
 
 FROM debian:bookworm-slim
 
