@@ -5,6 +5,10 @@ import "C"
 
 type SampleMethod C.enum_sample_method_t
 
+func (s SampleMethod) internal() C.enum_sample_method_t {
+	return C.enum_sample_method_t(s)
+}
+
 const (
 	EulerA       SampleMethod = C.EULER_A
 	Euler        SampleMethod = C.EULER
