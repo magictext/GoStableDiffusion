@@ -1,0 +1,33 @@
+FROM ubuntu:24.04 AS builder
+
+RUN apt-get update && \
+    apt-get install -y cmake git wget gnupg2 build-essential && \
+    wget -qO - https://packages.lunarg.com/lunarg-signing-key-pub.asc | apt-key add - && \
+    wget -qO /etc/apt/sources.list.d/lunarg-vulkan-1.4.304-noble.list https://packages.lunarg.com/vulkan/1.4.304/lunarg-vulkan-1.4.304-noble.list && \
+    apt-get update && \
+    apt-get install -y vulkan-sdk
+
+COPY --from=golang:1.24-bookworm /usr/local/go/ /usr/local/go/
+ENV PATH="/usr/local/go/bin:${PATH}"
+
+WORKDIR /src
+COPY . .
+
+RUN rm -rf stable-diffusion.cpp/build
+RUN VULKAN=1 go generate
+RUN go build -tags vulkan -o main cmd/main/main.go
+
+FROM debian:trixie-slim
+
+LABEL org.opencontainers.image.source = "https://github.com/Binozo/GoStableDiffusion"
+
+RUN apt-get update && \
+      apt-get install -y libgomp1 libvulkan1
+
+WORKDIR /app
+
+ADD https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/main/sd-v1-4.ckpt /app/models/sd-v1-4.ckpt
+
+COPY --from=builder /src/main .
+
+CMD ["/app/main"]
