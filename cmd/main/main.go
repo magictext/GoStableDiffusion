@@ -22,18 +22,18 @@ func main() {
 	sd.SetLogCallback(func(level sd.LogLevel, text string, data unsafe.Pointer) {
 		switch level {
 		case sd.LogDebug:
-			fmt.Println("DEBUG:", text)
+			fmt.Print("DEBUG:", text)
 		case sd.LogInfo:
-			fmt.Println("INFO:", text)
+			fmt.Print("INFO:", text)
 		case sd.LogError:
-			fmt.Println("ERROR:", text)
+			fmt.Print("ERROR:", text)
 		default:
-			fmt.Println("???:", text)
+			fmt.Print("???:", text)
 		}
 	})
 
 	sd.SetProgressCallback(func(step, steps int, time time.Duration, data unsafe.Pointer) {
-		fmt.Printf("PROGRESS: Completed step %d of %d in %0.2fs", step, steps, time.Seconds())
+		fmt.Printf("PROGRESS: Completed step %d of %d in %0.2fs\n", step, steps, time.Seconds())
 	})
 
 	params := sd.NewDefaultParams()
