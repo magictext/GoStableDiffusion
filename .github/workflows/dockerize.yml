@@ -5,7 +5,7 @@ on:
       - master
 
 jobs:
-  dockerize:
+  dockerize_cpu:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -23,5 +23,38 @@ jobs:
       - name: Build CPU Docker image
         run: docker build --push -f Dockerfile -t ghcr.io/binozo/go-stable-diffusion:latest .
 
+  dockerize_cuda:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+
       - name: Build Cuda Docker image
         run: docker build --push -f Dockerfile.cuda -t ghcr.io/binozo/go-stable-diffusion:cuda .
+
+  dockerize_vulkan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: 'Login to GitHub Container Registry'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Build Cuda Docker image
+        run: docker build --push -f Dockerfile.vulkan -t ghcr.io/binozo/go-stable-diffusion:vulkan .
