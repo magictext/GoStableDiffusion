@@ -43,7 +43,7 @@ $ CUDA=1 go generate
 Now you are ready to go! 🚀
 
 > [!TIP]
-> If you need extra help you can look at the [Dockerfile](./Dockerfile) or [Dockerfile.cuda](./Dockerfile.cuda) files.
+> If you need extra help you can look at the [Dockerfile](./Dockerfile), [Dockerfile.cuda](./Dockerfile.cuda) or [Dockerfile.vulkan](./Dockerfile.vulkan) files.
 > Or just create an issue.
 
 ## Example
