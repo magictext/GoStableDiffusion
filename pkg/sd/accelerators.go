@@ -1,6 +1,6 @@
 package sd
 
-import "github.com/Binozo/GoStableDiffusion/internal/accelerators"
+import "github.com/binozo/gostablediffusion/internal/accelerators"
 
 func HasCuda() bool {
 	return accelerators.HasCuda

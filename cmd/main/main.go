@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/Binozo/GoStableDiffusion/pkg/sd"
+	"github.com/binozo/gostablediffusion/pkg/sd"
 	"image/png"
 	"os"
 	"time"

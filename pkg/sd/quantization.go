@@ -1,6 +1,6 @@
 package sd
 
-import "github.com/Binozo/GoStableDiffusion/internal/sd"
+import "github.com/binozo/gostablediffusion/internal/sd"
 
 const (
 	F32     sd.Type = sd.F32

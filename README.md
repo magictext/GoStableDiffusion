@@ -10,13 +10,13 @@ CGO bindings for the awesome [stable-diffusion.cpp](https://github.com/leejet/st
 
 Get the package
 ```shell
-$ go get -u github.com/Binozo/GoStableDiffusion
+$ go get -u github.com/binozo/gostablediffusion
 ```
 
 Compile `stable-diffusion.cpp` bindings
 ```shell
 # cd into the package location
-cd $GOPATH/src/github.com/Binozo/GoStableDiffusion
+cd $GOPATH/pkg/mod/github.com/binozo/gostablediffusion
 go generate
 ```
 
@@ -54,7 +54,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/Binozo/GoStableDiffusion/pkg/sd"
+	"github.com/binozo/gostablediffusion/pkg/sd"
 	"image/png"
 	"os"
 	"time"

@@ -1,6 +1,6 @@
 package sd
 
-import "github.com/Binozo/GoStableDiffusion/internal/sd"
+import "github.com/binozo/gostablediffusion/internal/sd"
 
 const (
 	StdDefaultRng sd.Rng = sd.StdDefaultRng

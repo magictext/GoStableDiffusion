@@ -1,7 +1,7 @@
 package sd
 
 import (
-	"github.com/Binozo/GoStableDiffusion/internal/sd"
+	"github.com/binozo/gostablediffusion/internal/sd"
 	"unsafe"
 )
 
