@@ -6,6 +6,9 @@
 
 CGO bindings for the awesome [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp) project
 
+> [!WARNING]
+> This project is in an early stage and currently only works on Linux
+
 ## Setup
 
 Get the package
