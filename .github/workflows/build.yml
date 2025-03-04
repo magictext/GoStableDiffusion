@@ -1,0 +1,43 @@
+name: Build
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_macos:
+    name: "Build on MacOS"
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate
+        run: METAL=1 go generate
+
+      - name: Build
+        run: go build -o main cmd/main/main.go
+
+  build_windows:
+    name: "Build on Windows"
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate
+        run: CUDA=1 go generate
+
+      - name: Build
+        run: go build -o main cmd/main/main.go
+
+  build_linux:
+    name: "Build on Linux"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate
+        run: CUDA=1 go generate
+
+      - name: Build
+        run: go build -o main cmd/main/main.go
