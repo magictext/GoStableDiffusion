@@ -11,8 +11,6 @@ import (
 
 func main() {
 	fmt.Println("Warming up")
-	fmt.Println("Running with Cuda:", sd.HasCuda())
-	fmt.Println("Running with Vulkan:", sd.HasVulkan())
 
 	ctx, err := sd.NewDefault("models/sd-v1-4.ckpt")
 	if err != nil {
