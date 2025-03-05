@@ -20,12 +20,17 @@ jobs:
 
   build_windows:
     name: "Build on Windows"
-    runs-on: windows-latest
+    runs-on: windows-2019
     steps:
       - uses: actions/checkout@v3
 
+      - name: cuda-toolkit
+        uses: Jimver/cuda-toolkit@v0.2.21
+
       - name: Generate
-        run: CUDA=1 go generate
+        run: go generate
+        env:
+          CUDA: 1
 
       - name: Build
         run: go build -o main cmd/main/main.go
@@ -35,6 +40,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: cuda-toolkit
+        uses: Jimver/cuda-toolkit@v0.2.21
 
       - name: Generate
         run: CUDA=1 go generate
