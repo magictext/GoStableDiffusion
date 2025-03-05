@@ -11,7 +11,9 @@ COPY . .
 
 RUN rm -rf stable-diffusion.cpp/build
 RUN CUDA=1 go generate
-RUN go build -tags cuda -o main cmd/main/main.go
+RUN cp stable-diffusion.cpp/build/bin/libstable-diffusion.so /lib/
+RUN ldconfig
+RUN LD_LIBRARY_PATH=/usr/local/cuda-12.8/compat/:$LD_LIBRARY_PATH go build -tags cuda -o main cmd/main/main.go
 
 FROM nvidia/cuda:12.8.0-cudnn-runtime-ubuntu24.04
 
@@ -25,5 +27,6 @@ WORKDIR /app
 ADD https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/main/sd-v1-4.ckpt /app/models/sd-v1-4.ckpt
 
 COPY --from=builder /src/main .
+COPY --from=builder /lib/libstable-diffusion.so /lib/libstable-diffusion.so
 
 CMD ["/app/main"]
