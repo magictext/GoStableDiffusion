@@ -58,8 +58,8 @@ jobs:
 
       - name: Create libcuda.so.1 link
         run: |
-          ln -s /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so libcuda.so.1
-          ln -s /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so.1
+          sudo ln -s /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so libcuda.so.1
+          sudo ln -s /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so.1
 
       - name: list
         run: ls /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/
