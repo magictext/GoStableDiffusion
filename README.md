@@ -50,7 +50,21 @@ $ CUDA=1 go generate
 
 After successful compilation you will find your built shared library at `stable-diffusion.cpp/build/bin/libstable-diffusion<.so/.dylib/.dll>`.
 
-You will have to install it yourself. On linux you could copy it to `/usr/local/lib/`. (Better tutorial coming soon)
+#### Installing
+
+Now you have to install the shared library to your system
+
+> [!NOTE]
+> Keep in mind you need to ship the shared library with your application.
+
+#### Installing - Linux
+On Linux you can copy `libstable-diffusion.so` to `/usr/local/lib/`.
+
+#### Installing - MacOS
+On MacOS you can copy `libstable-diffusion.dylib` to `/usr/local/lib/`.
+
+#### Installing - Windows
+On Windows you can keep `libstable-diffusion.dll` in the same directory as your executable.
 
 
 ### Go
