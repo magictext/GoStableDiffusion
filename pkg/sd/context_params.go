@@ -38,6 +38,7 @@ var defaultContextParams = ContextParams{
 	NThreads:              runtime.NumCPU(),
 	RngType:               sd.CudaRng,
 	Schedule:              sd.Default,
+	WType:                 sd.Unspecified,
 }
 
 func GetDefaultContextParams() ContextParams {
