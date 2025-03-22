@@ -11,6 +11,7 @@ CGO bindings for the awesome [stable-diffusion.cpp](https://github.com/leejet/st
 - [ ] IMG2IMG
 - [ ] IMG2VID (Waiting for `stable-diffusion.cpp` [implementation](https://github.com/leejet/stable-diffusion.cpp/blob/10c6501bd05a697e014f1bee3a84e5664290c489/examples/cli/main.cpp#L821))
 - [ ] Image upscaling
+- [ ] [Model quantization and conversion](https://github.com/leejet/stable-diffusion.cpp/blob/master/docs/quantization_and_gguf.md)
 - [ ] [PhotoMaker](https://github.com/leejet/stable-diffusion.cpp/blob/master/docs/photo_maker.md)
 
 ## Setup
