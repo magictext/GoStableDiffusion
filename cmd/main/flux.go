@@ -36,6 +36,7 @@ func main() {
 		SetClipL("models/clip_l.safetensors").
 		SetVaePath("models/ae.safetensors").
 		SetT5xxlPath("models/t5xxl_fp16.safetensors").
+		SetLoRaDir("models/lora").
 		UseFlashAttn().
 		Load()
 
@@ -49,7 +50,7 @@ func main() {
 	params.Height = 512
 	params.Width = 512
 	params.CfgScale = 1
-	params.Prompt = "a lovely cat holding a sign says 'flux.cpp"
+	params.Prompt = "a lovely cat holding a sign says 'flux.cpp'<lora:realism_lora_comfy_converted:1>"
 
 	fmt.Println("Running inference")
 	result := ctx.Text2Img(params)

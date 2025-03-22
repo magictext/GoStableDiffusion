@@ -40,6 +40,11 @@ func (b *builder) SetT5xxlPath(t5xxlPath string) *builder {
 	return b
 }
 
+func (b *builder) SetLoRaDir(loraDir string) *builder {
+	b.params.LoraModelDir = loraDir
+	return b
+}
+
 func (b *builder) UseFlashAttn() *builder {
 	b.params.DiffusionFlashAttn = true
 	return b
