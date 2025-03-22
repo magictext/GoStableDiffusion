@@ -45,10 +45,9 @@ func main() {
 	defer ctx.Free()
 
 	params := sd.NewDefaultParams()
-	params.SampleSteps = 4
 	params.SampleMethod = sd.Euler
-	//params.Height = 512
-	//params.Width = 512
+	params.Height = 512
+	params.Width = 512
 	params.CfgScale = 1
 	params.Prompt = "a lovely cat holding a sign says 'flux.cpp"
 
