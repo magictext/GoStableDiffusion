@@ -29,3 +29,4 @@ if "%VULKAN%"=="1" (
 cmake .. -DSD_CUDA=%SD_CUDA% -DSD_METAL=%SD_METAL% -DSD_VULKAN=%SD_VULKAN% -DSD_SHARED_LIBRARY=ON
 
 cmake --build . --config Release -j%NUMBER_OF_PROCESSORS%
+copy bin\libstable-diffusion.dll ..\..
