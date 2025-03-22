@@ -36,6 +36,9 @@ jobs:
         env:
           CUDA: 1
 
+      - name: Find DLLs
+        run: dir /s /b *.dll
+
       - name: Build
         run: go build -o main cmd/main/main.go
 
