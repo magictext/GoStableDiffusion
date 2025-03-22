@@ -57,6 +57,9 @@ jobs:
         run: CUDA=1 go generate
 
       - name: list
+        run: find / -name "libcuda.so.1" 2>/dev/null
+
+      - name: list
         run: ls /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/
 
       - name: Build
