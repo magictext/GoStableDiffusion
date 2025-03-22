@@ -6,8 +6,12 @@
 
 CGO bindings for the awesome [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp) project
 
-> [!WARNING]
-> This project is in an early stage
+## Supported features
+- [x] TXT2IMG
+- [ ] IMG2IMG
+- [ ] IMG2VID (Waiting for `stable-diffusion.cpp` [implementation](https://github.com/leejet/stable-diffusion.cpp/blob/10c6501bd05a697e014f1bee3a84e5664290c489/examples/cli/main.cpp#L821))
+- [ ] Image upscaling
+- [ ] [PhotoMaker](https://github.com/leejet/stable-diffusion.cpp/blob/master/docs/photo_maker.md)
 
 ## Setup
 
