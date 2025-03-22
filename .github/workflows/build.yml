@@ -61,8 +61,5 @@ jobs:
           sudo ln -s /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so libcuda.so.1
           sudo ln -s /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so.1
 
-      - name: list
-        run: ls /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/
-
       - name: Build
         run: CGO_LDFLAGS="-L/usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/" go build -ldflags "-L /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs" -o main cmd/main/main.go
