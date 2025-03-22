@@ -45,6 +45,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Cleanup GitHub bloat
+        run: curl -s -L https://raw.githubusercontent.com/apache/flink/02d30ace69dc18555a5085eccf70ee884e73a16e/tools/azure-pipelines/free_disk_space.sh | bash
+
       - uses: Jimver/cuda-toolkit@v0.2.22
         id: cuda-toolkit
         with:
