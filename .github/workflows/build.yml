@@ -60,4 +60,4 @@ jobs:
         run: ls /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/
 
       - name: Build
-        run: CGO_LDFLAGS="-L/usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/" go build -ldflags "-L/usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs" -o main cmd/main/main.go
+        run: CGO_LDFLAGS="-L/usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/" go build -ldflags "-L /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs" -o main cmd/main/main.go
