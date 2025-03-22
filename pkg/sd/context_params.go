@@ -46,9 +46,9 @@ func GetDefaultContextParams() ContextParams {
 }
 
 func (cp *ContextParams) validate() error {
-	if cp.ModelPath == "" {
+	if cp.ModelPath == "" && cp.DiffusionModelPath == "" {
 		return errors.New("model path required")
-	} else if !fileExists(cp.ModelPath) {
+	} else if !fileExists(cp.ModelPath) && !fileExists(cp.DiffusionModelPath) {
 		return errors.New("model path does not exist")
 	}
 

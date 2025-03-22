@@ -116,7 +116,7 @@ func main() {
 	ctx, err := sd.New().
 		SetModel("models/sd3_medium_incl_clips_t5xxlfp16.safetensors").
 		UseFlashAttn().
-		CreateContext()
+		Load()
 
 	if err != nil {
 		panic(err)

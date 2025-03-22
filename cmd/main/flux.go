@@ -32,7 +32,10 @@ func main() {
 	})
 
 	ctx, err := sd.New().
-		SetModel("models/sd3_medium_incl_clips_t5xxlfp16.safetensors").
+		SetDiffusionModel("models/flux1-dev-q8_0.gguf").
+		SetClipL("models/clip_l.safetensors").
+		SetVaePath("models/ae.safetensors").
+		SetT5xxlPath("models/t5xxl_fp16.safetensors").
 		UseFlashAttn().
 		Load()
 
@@ -42,13 +45,12 @@ func main() {
 	defer ctx.Free()
 
 	params := sd.NewDefaultParams()
-	params.CfgScale = 5
-	params.SampleSteps = 30
+	params.SampleSteps = 4
 	params.SampleMethod = sd.Euler
-	params.Height = 768
-	params.Width = 768
-	params.Seed = 42
-	params.Prompt = "fantasy medieval village world inside a glass sphere , high detail, fantasy, realistic, light effect, hyper detail, volumetric lighting, cinematic, macro, depth of field, blur, red light and clouds from the back, highly detailed epic cinematic concept art cg render made in maya, blender and photoshop, octane render, excellent composition, dynamic dramatic cinematic lighting, aesthetic, very inspirational, world inside a glass sphere by james gurney by artgerm with james jean, joe fenton and tristan eaton by ross tran, fine details, 4k resolution"
+	//params.Height = 512
+	//params.Width = 512
+	params.CfgScale = 1
+	params.Prompt = "a lovely cat holding a sign says 'flux.cpp"
 
 	fmt.Println("Running inference")
 	result := ctx.Text2Img(params)
