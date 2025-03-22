@@ -56,8 +56,5 @@ jobs:
       - name: Generate
         run: CUDA=1 go generate
 
-      - name: Generate
-        run: find / -name "libcuda.so" 2>/dev/null
-
       - name: Build
-        run: go build -o main cmd/main/main.go
+        run: CGO_LDFLAGS="-L/usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/" go build -o main cmd/main/main.go
