@@ -37,7 +37,7 @@ jobs:
           CUDA: 1
 
       - name: Find DLLs
-        run: dir /s /b *.dll
+        run: Get-ChildItem -Recurse -Filter *.dll
 
       - name: Build
         run: go build -o main cmd/main/main.go
