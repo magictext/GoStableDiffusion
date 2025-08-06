@@ -15,7 +15,7 @@ jobs:
       - name: Generate
         run: go generate
         env:
-          CUDA: 1
+          VULKAN: 1
 
       - name: Build
         run: go build -ldflags "-L stable-diffusion.cpp\build\bin\Release" -o main cmd/main/main.go
