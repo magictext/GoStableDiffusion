@@ -6,30 +6,11 @@ on:
       - master
 
 jobs:
-  build_macos:
-    name: "Build on MacOS"
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-go@v5
-        with:
-          go-version: '>=1.24.0'
-
-      - name: Generate
-        run: METAL=1 go generate
-
-      - name: Build
-        run: go build -o main cmd/main/main.go
-
   build_windows:
     name: "Build on Windows"
-    runs-on: windows-2019
+    runs-on: windows-2025
     steps:
       - uses: actions/checkout@v3
-
-      - name: cuda-toolkit
-        uses: Jimver/cuda-toolkit@v0.2.15
 
       - name: Generate
         run: go generate
@@ -39,27 +20,4 @@ jobs:
       - name: Build
         run: go build -ldflags "-L stable-diffusion.cpp\build\bin\Release" -o main cmd/main/main.go
 
-  build_linux:
-    name: "Build on Linux"
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Cleanup GitHub bloat
-        run: curl -s -L https://raw.githubusercontent.com/apache/flink/02d30ace69dc18555a5085eccf70ee884e73a16e/tools/azure-pipelines/free_disk_space.sh | bash
-
-      - uses: Jimver/cuda-toolkit@v0.2.22
-        id: cuda-toolkit
-        with:
-          cuda: '12.5.0'
-
-      - name: Generate
-        run: CUDA=1 go generate
-
-      - name: Create libcuda.so.1 link
-        run: |
-          sudo ln -s /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so libcuda.so.1
-          sudo ln -s /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/libcuda.so.1
-
-      - name: Build
-        run: CGO_LDFLAGS="-L/usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs/" go build -ldflags "-L /usr/local/cuda-12.5/targets/x86_64-linux/lib/stubs" -o main cmd/main/main.go
+ 
